@@ -1,2 +1,0 @@
-totality023.idr:9:1:
-Main.run is possibly not total due to recursive path Main.run --> Main.run
