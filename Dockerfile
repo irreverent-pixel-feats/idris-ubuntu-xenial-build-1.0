@@ -15,13 +15,10 @@ RUN cd /tmp \
   && cabal update \
   && cabal sandbox init \
   && cabal install -j --only-dependencies --max-backjumps=-1 --reorder-goals \
-  && cabal freeze
-
-RUN cd /opt/idris/idris-${IDRIS_VERSION} \
+  && cd /opt/idris/idris-${IDRIS_VERSION} \
   && cabal configure \
-  && cabal install -j
-
-RUN ln -sf /opt/idris/idris-${IDRIS_VERSION}/.cabal-sandbox/bin/idris* /usr/local/bin
+  && cabal install -j \
+  && ln -sf /opt/idris/idris-${IDRIS_VERSION}/.cabal-sandbox/bin/idris* /usr/local/bin
 
 # stuff in the data dir is likely to change very frequently but doesnt actually affect the image much itself,
 # example: version SHAs
